@@ -1,0 +1,13 @@
+/* Apply to entire app */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0f172a; /* change this */
+    color: white; /* optional */
+    font-family: 'Poppins', sans-serif; /* change font */
+  }
+  a{
+    color:#eb2f6e;
+    text-decoration: none;
+
+  }

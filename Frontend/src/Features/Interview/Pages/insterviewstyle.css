@@ -1,0 +1,384 @@
+/* ── Interview page — no outer container needed, AppLayout handles it ──── */
+
+.iv-layout {
+  display: grid;
+  grid-template-columns: 190px 1fr 220px;
+  gap: 1rem;
+  max-width: 1140px;
+  margin: 0 auto;
+  min-height: calc(100vh - 56px - 48px - 3.5rem); /* full height minus layout chrome */
+}
+
+/* LEFT NAV */
+.iv-sidebar {
+  background: #1e293b;
+  border-radius: 14px;
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: fit-content;
+  /* position: sticky; */
+  top: calc(56px + 1.75rem);
+}
+
+.iv-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-btn {
+  width: 100%;
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  font-family: inherit;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f1f5f9;
+}
+
+.nav-btn.active {
+  background: rgba(235, 47, 110, 0.12);
+  color: #eb2f6e;
+  font-weight: 500;
+}
+
+/* MAIN */
+.iv-main {
+  background: #1e293b;
+  border-radius: 14px;
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  padding: 1.5rem;
+  overflow-y: auto;
+  min-height: 400px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #f1f5f9;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
+}
+
+/* QUESTION CARDS */
+.question-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.question-card {
+  background: #0f172a;
+  border-radius: 10px;
+  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.question-card.open {
+  border-color: rgba(235, 47, 110, 0.3);
+}
+
+.question-header {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 0.875rem 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
+.q-number {
+  font-size: 11px;
+  font-weight: 600;
+  color: #eb2f6e;
+  background: rgba(235, 47, 110, 0.1);
+  padding: 2px 7px;
+  border-radius: 5px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.q-text {
+  font-size: 13px;
+  color: #cbd5e1;
+  flex: 1;
+  line-height: 1.5;
+}
+
+.q-chevron {
+  font-size: 10px;
+  color: #475569;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.question-body {
+  padding: 0 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+}
+
+.q-section {
+  padding-top: 10px;
+}
+
+.q-label {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #475569;
+  margin-bottom: 5px;
+}
+
+.q-section p {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+/* ROADMAP */
+.roadmap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.roadmap-card {
+  display: flex;
+  gap: 14px;
+  background: #0f172a;
+  border-radius: 10px;
+  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  padding: 1rem;
+}
+
+.roadmap-day-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #eb2f6e;
+  background: rgba(235, 47, 110, 0.1);
+  border-radius: 7px;
+  padding: 4px 8px;
+  height: fit-content;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.roadmap-focus {
+  font-size: 13px;
+  font-weight: 500;
+  color: #e2e8f0;
+  margin-bottom: 8px;
+}
+
+.roadmap-tasks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.roadmap-tasks li {
+  font-size: 12px;
+  color: #64748b;
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.roadmap-tasks li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #334155;
+}
+
+/* RIGHT PANEL */
+.iv-right {
+  background: #1e293b;
+  border-radius: 14px;
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: fit-content;
+  /* position: sticky; */
+  top: calc(56px + 1.75rem);
+}
+
+.score-card {
+  background: #0f172a;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.score-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #64748b;
+}
+.pdfgenerate-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.score-value {
+  font-size: 28px;
+  font-weight: 600;
+  color: #eb2f6e;
+}
+
+.score-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  background: #eb2f6e;
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+
+.skill-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #64748b;
+  margin-bottom: -4px;
+}
+
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skill-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0.6rem 0.75rem;
+  background: #0f172a;
+  border-radius: 8px;
+  border: 0.5px solid rgba(255, 255, 255, 0.06);
+}
+
+.skill-name {
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 5px;
+  flex-shrink: 0;
+  text-transform: capitalize;
+}
+
+.badge-low {
+  background: rgba(29, 158, 117, 0.15);
+  color: #5dcaa5;
+}
+
+.badge-medium {
+  background: rgba(239, 159, 39, 0.15);
+  color: #ef9f27;
+}
+
+.badge-high {
+  background: rgba(226, 75, 74, 0.15);
+  color: #f09595;
+}
+
+.pdfgenerate-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #eb2f6e;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: auto;
+}
+
+.pdfgenerate-btn:hover { background: #c92560; }
+.pdfgenerate-btn:active { transform: scale(0.99); }
+
+/* Loading reuse from home */
+.home-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 1rem;
+  color: #475569;
+  font-size: 14px;
+}
+
+.home-spinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-top-color: #eb2f6e;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .iv-layout {
+    grid-template-columns: 1fr;
+  }
+  .iv-right {
+    order: -1;
+    position: static;
+  }
+  .iv-sidebar {
+    position: static;
+  }
+}
