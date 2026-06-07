@@ -19,13 +19,15 @@ const resumeContent = data.text;
 
   const interViewReportByAi = await generateInterviewReport({
     resume: resumeContent.text,
+    resume: resumeContent,
     selfDescription,
     jobDescription,
   });
 
   const interviewReport = await interviewReportModel.create({
     user: req.user.id,
-    resume: resumeContent.text,
+    // resume: resumeContent.text,
+    resume: resumeContent,
     selfDescription,
     jobDescription,
     title: interViewReportByAi.title,
