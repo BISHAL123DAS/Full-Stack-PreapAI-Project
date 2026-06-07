@@ -150,6 +150,7 @@ export const useAuth = () => {
           setUser(null);
         }
       } catch (e) {
+        console.log("errr",e)
         setUser(null);
       } finally {
         setLoading(false);
