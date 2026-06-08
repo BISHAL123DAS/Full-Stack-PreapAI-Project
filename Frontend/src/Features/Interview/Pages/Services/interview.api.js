@@ -1,12 +1,13 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: import.meta.env.VITE_API_URL, // ✅ fixed key name
   withCredentials: true,
 });
 
-// @service to generate interview report
+console.log("API URL:", import.meta.env.VITE_API_URL);
 
+// @service to generate interview report
 export const generateInterviewReport = async ({
   jobDescription,
   selfDescription,
@@ -16,9 +17,9 @@ export const generateInterviewReport = async ({
     const formData = new FormData();
     formData.append("jobDescription", jobDescription);
     formData.append("selfDescription", selfDescription);
-    formData.append("resume", resumeFile); 
+    formData.append("resume", resumeFile);
 
-    const response = await api.post("/api/interview/", formData, {
+    const response = await api.post("/interview/", formData, { // ✅ removed /api
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -32,10 +33,9 @@ export const generateInterviewReport = async ({
 };
 
 // @service to get interview report by ID
-
 export const getInterviewReportById = async (interviewId) => {
   try {
-    const response = await api.get(`/api/interview/report/${interviewId}`);
+    const response = await api.get(`/interview/report/${interviewId}`); // ✅ removed /api
     return response.data;
   } catch (error) {
     console.error("Error fetching report by ID:", error);
@@ -44,10 +44,9 @@ export const getInterviewReportById = async (interviewId) => {
 };
 
 // @service to get all interview reports
-
 export const getAllInterviewReports = async () => {
   try {
-    const response = await api.get("/api/interview/");
+    const response = await api.get("/interview/"); // ✅ removed /api
     return response.data;
   } catch (error) {
     console.error("Error fetching all reports:", error);
@@ -55,21 +54,18 @@ export const getAllInterviewReports = async () => {
   }
 };
 
-
-// @service to genarte resume pdf based on teh userselfsedcription,jobdesription ,and resume
-
+// @service to generate resume pdf
 export const generateResumePdf = async ({ interviewId }) => {
   try {
     const response = await api.post(
-      `/api/interview/resume/pdf/${interviewId}`,
+      `/interview/resume/pdf/${interviewId}`, // ✅ removed /api
       null,
-    {
-    responseType: "blob",
-    });
-    return response.data
+      {
+        responseType: "blob",
+      }
+    );
+    return response.data;
   } catch (e) {
     console.log("errror on generatePdf", e);
   }
-
-}
-
+};
