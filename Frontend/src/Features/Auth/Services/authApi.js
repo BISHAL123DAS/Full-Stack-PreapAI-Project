@@ -1,8 +1,13 @@
 import axios from "axios";
 
 // ✅ Create reusable axios instance
+// const API = axios.create({
+//   baseURL: "http://localhost:3000/api",
+//   withCredentials: true,
+// });
+
 const API = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: "https://full-stack-preap-ai-project-backend.vercel.app/api",
   withCredentials: true,
 });
 
