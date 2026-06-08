@@ -17,7 +17,10 @@ app.use(
   })
 );
 
-// Routes
+app.get("/", (req, res) => {
+  res.send("Backend is running");
+});
+
 const authRouter = require("./routes/auth.routes");
 const interviewRouter = require("./routes/interview.routes");
 
