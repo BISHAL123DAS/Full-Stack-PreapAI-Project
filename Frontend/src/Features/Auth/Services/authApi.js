@@ -1,11 +1,6 @@
 import axios from "axios";
 
-// ✅ Create reusable axios instance
-// const API = axios.create({
-//   baseURL: "http://localhost:3000/api",
-//   withCredentials: true,
-// });
-
+// Create reusable axios instance
 const API = axios.create({
   baseURL: "https://full-stack-preap-ai-project-backend.vercel.app/api",
   withCredentials: true,
@@ -19,6 +14,7 @@ export async function register({ username, email, password }) {
       email,
       password,
     });
+
     return data;
   } catch (err) {
     console.error("Registration error:", err.response?.data || err.message);
@@ -33,6 +29,7 @@ export async function login({ email, password }) {
       email,
       password,
     });
+
     return data;
   } catch (err) {
     console.error("Login error:", err.response?.data || err.message);

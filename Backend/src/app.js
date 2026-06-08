@@ -1,39 +1,26 @@
 const express = require("express");
-const cookieParser=require("cookie-parser")
-const cors=require("cors")
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const app = express();
 
 app.use(express.json());
-app.use(cookieParser())
-// app.use(cors({
-//     origin:"http://localhost:5174",
-//     credentials:true
-// }))
+app.use(cookieParser());
 
-// app.use(cors({
-//     origin: [
-//     //   "http://localhost:5174",
-//       "https://full-stack-preap-ai-project.vercel.app/"
-//     ],
-//     credentials: true
-//   }));
-
-  app.use(cors({
+app.use(
+  cors({
     origin: [
       "http://localhost:5174",
-      "https://bishal-preap-ai.netlify.app"
+      "https://bishal-preap-ai.netlify.app",
     ],
-    credentials: true
-  }));
+    credentials: true,
+  })
+);
 
-// required all the routes here
+// Routes
 const authRouter = require("./routes/auth.routes");
+const interviewRouter = require("./routes/interview.routes");
 
-// required the interview routes--/
-const interviewRouter=require("./routes/interview.routes")
-
-// using all the routes here *
 app.use("/api/auth", authRouter);
 app.use("/api/interview", interviewRouter);
 
