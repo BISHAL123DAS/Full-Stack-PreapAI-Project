@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Header";
 import Sidenav from "./Sidenav";
 import Footer from "./Footer";
-import "./AppLayout.css";
+import "./Applayout.css";
 
 /**
  * AppLayout — wraps every authenticated page.
