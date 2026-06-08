@@ -2,9 +2,10 @@ import axios from "axios";
 
 // Create reusable axios instance
 const API = axios.create({
-  baseURL: "https://full-stack-preap-ai-project-backend.vercel.app/api",
+  baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true,
 });
+console.log("API URL:", import.meta.env.VITE_API_URL);
 
 // ================= REGISTER =================
 export async function register({ username, email, password }) {

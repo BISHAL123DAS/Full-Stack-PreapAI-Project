@@ -8,14 +8,15 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(
-  cors({
-    origin: [
-      "http://localhost:5174",
-      "https://bishal-preap-ai.netlify.app",
-    ],
-    credentials: true,
-  })
-);
+    cors({
+      origin: [
+        "http://localhost:5174",
+        "https://bishal-preap-ai.netlify.app",
+        "https://full-stack-preap-ai-project.vercel.app", // ✅ add this
+      ],
+      credentials: true,
+    })
+  );
 
 app.get("/", (req, res) => {
   res.send("Backend is running");
